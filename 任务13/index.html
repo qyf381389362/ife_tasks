@@ -26,6 +26,43 @@
   获取aqi-input输入的值，并显示在aqi-display中
   */
 
+  // 我自己写得代码
+  /*
+  var my_button = document.getElementById("button");
+  my_button.addEventListener("click",function(){
+    var aqi_input = document.getElementById("aqi-input");
+    var aqi_input_value = aqi_input.value;
+    console.log(aqi_input_value);
+    var aqi_display = document.getElementById("aqi-display");
+    aqi_display.innerHTML = aqi_input_value;
+
+  });
+  */
+
+  // 参考别人写得代码
+  var $ = function (id) {
+    return document.getElementById(id);//此处括号里的id不能用引号括起来，不然无法取得元素
+  };
+
+  var handler = function(){
+    var num = parseInt($("aqi-input").value);
+    if(!isNaN(num)&&(num>=0)&&(num<=1000)){
+      $("aqi-display").innerHTML = num;
+    }else{
+      alert($("aqi-input").value + "不是有效的AQI数值，请重新输入0-1000的有效整数");
+    }
+  };
+
+  $("button").addEventListener("click",function(event){
+    handler();
+  });
+  $("aqi-input").addEventListener("keyup",function(event){
+    if(event.keyCode === 13){
+      handler();
+    }
+  });
+
+  
 })();
 
 </script>
