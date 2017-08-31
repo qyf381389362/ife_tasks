@@ -40,8 +40,12 @@ function getData() {
   */
   var cities = document.getElementById("source").querySelectorAll("li");
   var num = document.getElementById("source").querySelectorAll("b");
-  alert(cities[1].innerHTML);
-  alert(num[0].innerHTML);
+  // alert(cities[1].innerHTML);
+  // var strs = cities[2].innerHTML;
+  // alert(strs);
+  // var x = strs.split('：');
+  // alert(x[0]);
+  // alert(num[0].innerHTML);
   var data = new Array();
   /*
   data = [
@@ -50,12 +54,21 @@ function getData() {
     ……
   ]
   */
-  for(var i = 0; i < cities.length; i++){
-    data[i][0] = cities[i].firstElementChild;
-    data[i][1] = num[i].firstElementChild;
+  for(var i = 0;i < 7;i++){
+    data[i] = new Array();
   }
-  // alert(cities);
-  // return data;
+  for(var i = 0; i < cities.length; i++){
+    var str = cities[i].innerHTML;
+    var strs = str.split('空气质量：');
+    data[i][0] = strs[0];
+    data[i][1] = num[i].innerHTML;
+    alert(data[i][0]);
+    alert(data[i][1]);
+  
+  }
+  alert(data.length);
+  alert(data);
+  return data;
 
 }
 getData();
